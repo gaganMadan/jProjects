@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin:0;padding:0;}
+ul.verticleList li{float:left;list-style:none;width:640px;height:360px;margin:0;}
+ul.verticleList{ padding: 0;margin:0;}
+.sliderDiv{height:360px;width:640px;overflow:hidden;float:left}
+.clear{clear:both;}
+#touchSlider{margin:0 auto;width:100%;}
+.slidingDiv{float:left;width:220px;height:360px;overflow: hidden;}
+
+ul.horizontalList{border: 1px solid #DDDDDD; padding: 0; width: 220px;cursor:move;margin:0}
+ul.horizontalList li{list-style:none;font-size:18px;padding: 25px 15px;border-bottom:1px solid #ddd;}
+ul.horizontalList li a{text-decoration:none;color:#000;outline:0;}

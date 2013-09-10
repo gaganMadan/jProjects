@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+  <link href="slider.css" rel="stylesheet" />
+<script language="javascript" src="jquery-1.7.2.js"></script>
+<script language="javascript" src="slider.js"></script>
+<!--<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">-->
+<!--<link href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" rel="stylesheet" />-->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<!--<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.js"></script>-->
+<script language="javascript" src="swipe.js"></script>
+<!--<script language="javascript" src="main.js"></script>-->
+
+</head>
+
+<body>
+
+	<div id="touchSlider">
+        <div class="sliderDiv">
+        	<ul class="verticleList">
+            	<li><a href="javascript:void(0)"><img src="images/02.jpg"/></a>1</li>
+                <li><a href="javascript:void(0)"><img src="images/03.jpg"/></a>2</li>
+                <li><a href="javascript:void(0)"><img src="images/04.jpg"/></a>3</li>
+                <li><a href="javascript:void(0)"><img src="images/05.jpg"/></a>4</li>
+                <li><a href="javascript:void(0)"><img src="images/06.jpg"/></a>5</li>
+                <li><a href="javascript:void(0)"><img src="images/07.jpg"/></a>6</li>
+                <li><a href="javascript:void(0)"><img src="images/08.jpg"/></a>7</li>
+                <li><a href="javascript:void(0)"><img src="images/09.jpg"/></a>8</li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="slidingDiv">
+        	  <ul class="horizontalList">
+              		<li><a href="javascript:void(0)">New Royal Slider</a>1</li>
+                    <li><a href="javascript:void(0)">New Royal Slider</a>2</li>
+                    <li><a href="javascript:void(0)">New Royal Slider</a>3</li>
+                    <li><a href="javascript:void(0)">New Royal Slider</a>4</li>
+                    <li><a href="javascript:void(0)">New Royal Slider</a>5</li>
+                    <li><a href="javascript:void(0)">New Royal Slider</a>6</li>
+                    <li><a href="javascript:void(0)">New Royal Slider</a>7</li>
+                    <li><a href="javascript:void(0)">New Royal Slider</a>8</li>
+              </ul>
+       </div>
+        <div class="clear"></div>
+    </div>
+
+</body>
+<script>
+	
+    	$('ul.verticleList').css('width', $('ul.verticleList li').length * 640);	
+		 $('ul.horizontalList').swipe( {
+        //Generic swipe handler for all directions
+       		 	swipe:function(event, direction, distance, duration, fingerCount) {
+				 var pos = ( direction == 'up' ) ? '-=' : '+=';
+				
+				$(this).animate({
+					'marginTop' : pos + distance + 'px'
+				 },function(){
+					 var marTop = $(this).css('margin-top');
+					 if(parseInt(marTop.substring(0,marTop.length - 2)) >= 0){
+						 $(this).css('margin-top','0px');
+					 }
+					 if( parseInt(marTop.substring(0,marTop.length - 2)) <= '-217' ){
+						  $(this).css('margin-top','-217px');
+					 }
+				});
+			
+		  },
+        //Default is 75px, set to 0 for demo so any distance triggers swipe
+         threshold:0
+      });
+	  
+	  var current = 0; 
+	  var pos;
+	  
+	  $('ul.horizontalList li').on('click',function(){
+		  var index = $(this).index();
+		
+		 var diff = index - current;
+		 //alert( 'diff' + diff );
+		 ( diff  >  0) ?  pos = '-=' : pos = '+=';
+		  diff = Math.abs(diff);
+		  //alert('pos' + pos);
+		  $('ul.verticleList').animate({
+				 'marginLeft' : pos + 640 * diff  
+			 },function(){
+				 current = index ;
+				 //alert( 'current' + current);
+		  });
+	 })
+  
+  
+
+  </script> 
+
+</html>
